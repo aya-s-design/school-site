@@ -1,0 +1,195 @@
+//
+// 講師紹介のスタイル
+//
+
+.teacher-list {
+    display: flex;
+    justify-content: space-between;
+    width: 100vw;
+    margin: 30px calc(50% - 50vw) 0;
+    @media (min-width: 590px) {
+        width: 100%;
+        margin: 30px auto;
+    }
+}
+
+.teacher-item {
+    position: relative;
+    cursor: pointer;
+    // 講師の名前
+    .teacher-name {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 30px;
+        line-height: 30px;
+        color: $white;
+        font-weight: 700;
+        text-align: center;
+        background: $orange;
+        @media (min-width: 590px) {
+            height: 40px;
+            line-height: 40px;
+        }
+        @media (min-width: 769px) {
+            height: 80px;
+            line-height: 80px;
+            font-size: 3.2rem;
+            z-index: 80;
+        }
+    }
+    // 講師の写真
+    .teacher-img {
+        padding-top: 30px;
+        @media (min-width: 590px) {
+            padding-top: 40px;
+        }
+        @media (min-width: 769px) {
+            padding-top: 80px;
+        }
+        width: 100%;
+        transform: scale(1);
+        //モノクロ化
+        filter: grayscale(100%);
+        transition: all .3s ease;
+    }
+    // プロフィールボタン
+    .profile-btn {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        -webkit-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+        color: $orange;
+        font-size: 1.4rem;
+        font-weight: 500;
+        border: 2px solid $orange;
+        padding: 8px 12px;
+        width: 60%;
+        line-height: 1;
+        text-align: center;
+        backdrop-filter: brightness(40%);
+        -webkit-backdrop-filter: brightness(40%);
+        @media (min-width: 769px) {
+            font-size: 2.8rem;
+            bottom: 20px;
+            padding: 20px 24px;
+        }
+    }
+    &:not(:first-child) {
+        margin-left: 10px;
+    }
+}
+
+// ホバー時
+.teacher-item:hover {
+    .teacher-img {
+        filter: grayscale(0);
+        transform: scale(1.2);
+    }
+    .profile-btn {
+        color: $white;
+        border-color: $white;
+    }
+}
+
+.mask {
+    display: block;
+    line-height: 0;
+    overflow: hidden;
+}
+
+// モーダルウィンドウ
+.modal-window {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    width: 80%;
+    padding: 30px 20px;
+    box-sizing: border-box;
+    background: $orange;
+    color: $white;
+    z-index: 1000;
+    @media (min-width: 590px) {
+        width: 50%;
+        padding: 40px 30px;
+    }
+    @media (min-width: 769px) {
+        padding: 70px 80px;
+    }
+    .profile-info {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        .profile-icon {
+            width: 100px;
+            @media (min-width: 769px) {
+                width: 160px;
+            }
+        }
+        .name-and-instrumental {
+            text-align: center;
+            line-height: 1;
+            .profile-name {
+                font-size: 2rem;
+                font-weight: 700;
+                margin-bottom: 10px;
+                @media (min-width: 769px) {
+                    font-size: 3.2rem;
+                }
+            }
+            .profile-instrumental {
+                font-size: 1.4rem;
+                @media (min-width: 769px) {
+                    font-size: 2.4rem;
+                }
+            }
+        }
+    }
+    .profile-text, .profile-message {
+        font-size: 1.4rem;
+        margin-top: 20px;
+        text-align: justify;
+        span {
+            display: inline-block;
+            background: $white;
+            color: $orange;
+            font-weight: 700;
+            padding: 2px 4px;
+            margin-bottom: 8px;
+        }
+        @media (min-width: 769px) {
+            font-size: 1.8rem;
+        }
+    }
+    // 閉じるボタン
+    .close-btn {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        cursor: pointer;
+        i {
+            font-size: 2.8rem;
+        }
+    }
+}
+
+
+// オーバーレイ
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba($color: $black, $alpha: 0.5);
+    width: 100%;
+    height: 100%;
+    z-index: 800;
+    cursor: pointer;
+}
